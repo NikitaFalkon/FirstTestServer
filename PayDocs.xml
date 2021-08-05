@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Inf_Pay_Doc>
+    <GUID_Doc>ba5a1bee-a180-43db-e054-001e0b59efca</GUID_Doc>
+    <Date>2021-02-01</Date>
+    <Scrc value="0"/>
+    <Vid_Otch value="0"/>
+    <Kol_Doc>5</Kol_Doc>
+    <Docs>
+        <Doc>
+            <Num>269716</Num>
+            <Date>2021-02-01</Date>
+            <ID>5773001997</ID>
+            <Nom_PP>42588</Nom_PP>
+            <Date_PP>2021-02-01</Date_PP>
+            <Sum_PP>24703.41</Sum_PP>
+            <Vid_Pay value="0"/>
+            <Date_PP_IN>2021-02-01</Date_PP_IN>
+            <Date_PP_OUT>2021-02-01</Date_PP_OUT>
+            <VID_Oper>01</VID_Oper>
+            <Inf_PAY>
+                <INN_PAY>11111111111</INN_PAY>
+                <KPP_PAY>2222222</KPP_PAY>
+                <CName_PAY>ЗАО Рога и Копыта</CName_PAY>
+            </Inf_PAY>
+            <Bank_PAY>
+                <BS_PAY>0322464357111111111</BS_PAY>
+                <BIC_PAY>111111111</BIC_PAY>
+                <BS_KS_PAY>40102810145371111111</BS_KS_PAY>
+            </Bank_PAY>
+            <Inf_RCP>
+                <INN_PAY>7707011111</INN_PAY>
+                <KPP_PAY>590422222</KPP_PAY>
+                <CName_PAY>ООО Всё для тебя</CName_PAY>
+            </Inf_RCP>
+            <Bank_RCP>
+                <BS_PAY>40817810549123456789</BS_PAY>
+                <BIC_PAY>222222222</BIC_PAY>
+                <BS_KS_PAY>12345678900000000603</BS_KS_PAY>
+            </Bank_RCP>
+            <Purpose_ID>1</Purpose_ID>
+            <Order_PAY>3</Order_PAY>
+            <UIN>0</UIN>
+            <Purpose>За электричество</Purpose>
+            <Type_Pl>1</Type_Pl>
+            <Date_IN_TOFK>2021-02-01</Date_IN_TOFK>
+            <GUID>ba44ab7a-1341-19a7-e054-001e0b59efca</GUID>
+        </Doc>
+        <Doc>
+            <Num>269718</Num>
+            <Date>2021-02-01</Date>
+            <ID>5773001997</ID>
+            <Nom_PP>42589</Nom_PP>
+            <Date_PP>2021-02-01</Date_PP>
+            <Sum_PP>22033.16</Sum_PP>
+            <Vid_Pay value="0"/>
+            <Date_PP_IN>2021-02-01</Date_PP_IN>
+            <Date_PP_OUT>2021-02-01</Date_PP_OUT>
+            <VID_Oper>01</VID_Oper>
+            <Inf_PAY>
+                <INN_PAY>3333333333</INN_PAY>
+                <KPP_PAY>44444444</KPP_PAY>
+                <CName_PAY>ПАО Какая-то организация</CName_PAY>
+            </Inf_PAY>
+            <Bank_PAY>
+                <BS_PAY>03224643123456789000</BS_PAY>
+                <BIC_PAY>111111111</BIC_PAY>
+                <BS_KS_PAY>40123456789070000048</BS_KS_PAY>
+            </Bank_PAY>
+            <Inf_RCP>
+                <INN_PAY>55555555</INN_PAY>
+                <KPP_PAY>66666666</KPP_PAY>
+                <CName_PAY>ООО Рассветы и туманы</CName_PAY>
+            </Inf_RCP>
+            <Bank_RCP>
+                <BS_PAY>40817123456780000000</BS_PAY>
+                <BIC_PAY>123456789</BIC_PAY>
+                <BS_KS_PAY>30112345678901200603</BS_KS_PAY>
+            </Bank_RCP>
+            <Purpose_ID>1</Purpose_ID>
+            <Order_PAY>3</Order_PAY>
+            <UIN>0</UIN>
+            <Purpose>За себя и за Сашку!!!!!!</Purpose>
+            <Type_Pl>1</Type_Pl>
+            <Date_IN_TOFK>2021-02-01</Date_IN_TOFK>
+            <GUID>ba44ab7a-1342-19a7-e054-001e0b59efca</GUID>
+        </Doc>
+        <Doc>
+            <Num>95868</Num>
+            <Date>2021-02-01</Date>
+            <ID>5773001997</ID>
+            <Nom_PP>42590</Nom_PP>
+            <Date_PP>2021-02-01</Date_PP>
+            <Sum_PP>53619.52</Sum_PP>
+            <Vid_Pay value="4"/>
+            <Date_PP_IN>2021-02-01</Date_PP_IN>
+            <Date_PP_OUT>2021-02-01</Date_PP_OUT>
+            <VID_Oper>01</VID_Oper>
+            <Inf_PAY>
+                <INN_PAY>66666666</INN_PAY>
+                <KPP_PAY>777777777</KPP_PAY>
+                <CName_PAY>ОАО Парыж</CName_PAY>
+            </Inf_PAY>
+            <Bank_PAY>
+                <BS_PAY>01234567890000005600</BS_PAY>
+                <BIC_PAY>999999999</BIC_PAY>
+                <BS_KS_PAY>41234567895370000048</BS_KS_PAY>
+            </Bank_PAY>
+            <Inf_RCP>
+                <INN_PAY>000000000000</INN_PAY>
+                <KPP_PAY>000000000</KPP_PAY>
+                <CName_PAY>ООО Луга и океаны</CName_PAY>
+            </Inf_RCP>
+            <Bank_RCP>
+                <BS_PAY>40817123456789406235</BS_PAY>
+                <BIC_PAY>111111111</BIC_PAY>
+                <BS_KS_PAY>30123456780000000603</BS_KS_PAY>
+            </Bank_RCP>
+            <Order_PAY>3</Order_PAY>
+            <UIN>0</UIN>
+            <Purpose>За хомячков</Purpose>
+            <Date_IN_TOFK>2021-02-01</Date_IN_TOFK>
+            <GUID>ba44ab7a-1343-19a7-e054-001e0b59efca</GUID>
+        </Doc>
+		<Doc>
+            <Num>95869</Num>
+            <Date>2021-02-02</Date>
+            <ID>5773001998</ID>
+            <Nom_PP>42591</Nom_PP>
+            <Date_PP>2021-02-01</Date_PP>
+            <Sum_PP>12345.52</Sum_PP>
+            <Vid_Pay value="5"/>
+            <Date_PP_IN>2021-02-02</Date_PP_IN>
+            <Date_PP_OUT>2021-02-02</Date_PP_OUT>
+            <VID_Oper>00</VID_Oper>
+            <Inf_PAY>
+                <INN_PAY>55555555</INN_PAY>
+                <KPP_PAY>66666666</KPP_PAY>
+                <CName_PAY>ООО Рассветы и туманы</CName_PAY>
+            </Inf_PAY>
+            <Bank_PAY>
+                <BS_PAY>40817123456780000000</BS_PAY>
+                <BIC_PAY>123456789</BIC_PAY>
+                <BS_KS_PAY>30112345678901200603</BS_KS_PAY>
+            </Bank_PAY>
+            <Inf_RCP>
+                <INN_PAY>000000000000</INN_PAY>
+                <KPP_PAY>000000000</KPP_PAY>
+                <CName_PAY>ООО Луга и океаны</CName_PAY>
+            </Inf_RCP>
+            <Bank_RCP>
+                <BS_PAY>40817123456789406235</BS_PAY>
+                <BIC_PAY>111111111</BIC_PAY>
+                <BS_KS_PAY>30123456780000000603</BS_KS_PAY>
+            </Bank_RCP>
+            <Order_PAY>3</Order_PAY>
+            <UIN>0</UIN>
+            <Purpose>За всё хорошее</Purpose>
+            <Date_IN_TOFK>2021-02-01</Date_IN_TOFK>
+            <GUID>ba44ab7a-1343-19a7-e054-001e0b59efc1</GUID>
+        </Doc>
+		<Doc>
+            <Num>95870</Num>
+            <Date>2021-02-03</Date>
+            <ID>5773001999</ID>
+            <Nom_PP>42592</Nom_PP>
+            <Date_PP>2021-02-03</Date_PP>
+            <Sum_PP>0.99</Sum_PP>
+            <Vid_Pay value="5"/>
+            <Date_PP_IN>2021-02-03</Date_PP_IN>
+            <Date_PP_OUT>2021-02-03</Date_PP_OUT>
+            <VID_Oper>99</VID_Oper>
+            <Inf_PAY>
+                <INN_PAY>7707011111</INN_PAY>
+                <KPP_PAY>590422222</KPP_PAY>
+                <CName_PAY>ООО Всё для тебя</CName_PAY>
+            </Inf_PAY>
+            <Bank_PAY>
+                <BS_PAY>40817810549123456789</BS_PAY>
+                <BIC_PAY>222222222</BIC_PAY>
+                <BS_KS_PAY>12345678900000000603</BS_KS_PAY>
+            </Bank_PAY>
+            <Inf_RCP>
+                <INN_PAY>66666666</INN_PAY>
+                <KPP_PAY>777777777</KPP_PAY>
+                <CName_PAY>ОАО Парыж</CName_PAY>
+            </Inf_RCP>
+            <Bank_RCP>
+                <BS_PAY>01234567890000005600</BS_PAY>
+                <BIC_PAY>999999999</BIC_PAY>
+                <BS_KS_PAY>41234567895370000048</BS_KS_PAY>
+            </Bank_RCP>
+            <Order_PAY>3</Order_PAY>
+            <UIN>0</UIN>
+            <Purpose>За 33 попугаев</Purpose>
+            <Date_IN_TOFK>2021-02-01</Date_IN_TOFK>
+            <GUID>ba44ab7a-1343-19a7-e054-001e0b59efc2</GUID>
+        </Doc>
+    </Docs>
+</Inf_Pay_Doc>

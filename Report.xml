@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SKP_REPORT_KS>
+    <DocNum>54171423</DocNum>
+    <DocDate>2021-02-01</DocDate>
+    <DocDateOld>2021-01-29</DocDateOld>
+    <AccNum>03224643570000005600</AccNum>
+    <Report_type_flag>Итоговая</Report_type_flag>
+    <Code_OKEU>383</Code_OKEU>
+    <Docs>
+        <Doc>
+            <Line_Num>849</Line_Num>
+            <DocNum>42588</DocNum>
+            <DocDate>2021-02-01</DocDate>
+            <DocGUID>ba44ab7a-1341-19a7-e054-001e0b59efca</DocGUID>
+            <OperType>01</OperType>
+            <Bic_Corr>1234567</Bic_Corr>
+            <AmountIn>0.00</AmountIn>
+            <AmountOut>24703.41</AmountOut>
+            <SendAcc>03224643570000005611</SendAcc>
+            <RecipAcc>40817810549770000011</RecipAcc>
+            <PurpPay>За электричество</PurpPay>
+        </Doc>
+        <Doc>
+            <Line_Num>850</Line_Num>
+            <DocNum>42589</DocNum>
+            <DocDate>2021-02-01</DocDate>
+            <DocGUID>ba44ab7a-1342-19a7-e054-001e0b59efca</DocGUID>
+            <OperType>01</OperType>
+            <Bic_Corr>1234567</Bic_Corr>
+            <AmountIn>0.00</AmountIn>
+            <AmountOut>22033.16</AmountOut>
+            <SendAcc>03224643570000005611</SendAcc>
+            <RecipAcc>40817810549770000011</RecipAcc>
+            <PurpPay>За себя и за Сашку!!!!!!</PurpPay>
+        </Doc>
+        <Doc>
+            <Line_Num>851</Line_Num>
+            <DocNum>42590</DocNum>
+            <DocDate>2021-02-01</DocDate>
+            <DocGUID>ba44ab7a-1343-19a7-e054-001e0b59efca</DocGUID>
+            <OperType>01</OperType>
+            <Bic_Corr>1234567</Bic_Corr>
+            <AmountIn>0.00</AmountIn>
+            <AmountOut>53619.52</AmountOut>
+            <SendAcc>03224643570000005611</SendAcc>
+            <RecipAcc>40817810249782406211</RecipAcc>
+            <PurpPay>За хомячков</PurpPay>
+        </Doc>
+		<Doc>
+            <Line_Num>852</Line_Num>
+            <DocNum>42591</DocNum>
+            <DocDate>2021-02-02</DocDate>
+            <DocGUID>ba44ab7a-1343-19a7-e054-001e0b59efc1</DocGUID>
+            <OperType>00</OperType>
+            <Bic_Corr>1234567</Bic_Corr>
+            <AmountIn>0.00</AmountIn>
+            <AmountOut>12345.52</AmountOut>
+            <SendAcc>03224643570000005612</SendAcc>
+            <RecipAcc>40817810249782406212</RecipAcc>
+            <PurpPay>За всё хорошее</PurpPay>
+        </Doc>
+		<Doc>
+            <Line_Num>853</Line_Num>
+            <DocNum>42592</DocNum>
+            <DocDate>2021-02-03</DocDate>
+            <DocGUID>ba44ab7a-1343-19a7-e054-001e0b59efc2</DocGUID>
+            <OperType>99</OperType>
+            <Bic_Corr>1234567</Bic_Corr>
+            <AmountIn>0.00</AmountIn>
+            <AmountOut>0.99</AmountOut>
+            <SendAcc>03224643570000005613</SendAcc>
+            <RecipAcc>40817810249782406213</RecipAcc>
+            <PurpPay>За 33 попугаев</PurpPay>
+        </Doc>
+    </Docs>
+    <Executor_SFP>Фамилия Имя Отчество</Executor_SFP>
+    <Executor_Post>Должность</Executor_Post>
+    <StmInfrmtn_TF>
+        <GUID>ba5a1bee-a180-43db-e054-001e0b59efca</GUID>
+    </StmInfrmtn_TF>
+</SKP_REPORT_KS>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Parsing method:</p>
+<!--/*@thymesVar id="form" type=""*/-->
+<form action="#" method="POST" enctype="multipart/form-data" th:action="@{/}" th:object="${form}" >
+    <div>
+        <label for="file">W3C: </label>
+        <input type="radio" value="wc" th:field="*{name}" id="file"/></br>
+        <label for="file1">JXB: </label>
+        <input type="radio" value="jx" th:field="*{name}" id="file1"/>
+    </div>
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+     <input type="file" th:field="*{zipFile}"/><br/>
+    <p th:if="${#fields.hasErrors('zipFile')}" th:errors="*{zipFile}">Multipart Error</p>
+    <br/>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+    <p th:text="${result}"/>
+</form>
+</body>
+</html>

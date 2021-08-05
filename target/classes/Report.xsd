@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SKP_REPORT_KS">
+       <xs:complexType>
+          <xs:sequence>
+              <xs:element name="DocNum" type="xs:string"/>
+              <xs:element name="DocDate" type="xs:string"/>
+              <xs:element name="DocDateOld" type="xs:string"/>
+              <xs:element name="AccNum" type="xs:string"/>
+              <xs:element name="Report_type_flag" type="xs:string"/>
+              <xs:element name="Code_OKEU" type="xs:string"/>
+              <xs:element name="Docs">
+                  <xs:complexType>
+                      <xs:sequence>
+                          <xs:element name="Doc" maxOccurs="unbounded">
+                              <xs:complexType>
+                                  <xs:sequence>
+                                      <xs:element name="Line_Num" type="xs:string"/>
+                                      <xs:element name="DocNum" type="xs:string"/>
+                                      <xs:element name="DocDate" type="xs:string"/>
+                                      <xs:element name="DocGUID" type="xs:string"/>
+                                      <xs:element name="OperType" type="xs:string"/>
+                                      <xs:element name="Bic_Corr" type="xs:string"/>
+                                      <xs:element name="AmountIn" type="xs:string"/>
+                                      <xs:element name="AmountOut" type="xs:string"/>
+                                      <xs:element name="SendAcc" type="xs:string"/>
+                                      <xs:element name="RecipAcc" type="xs:string"/>
+                                      <xs:element name="PurpPay" type="xs:string"/>
+                                  </xs:sequence>
+                              </xs:complexType>
+                          </xs:element>
+                      </xs:sequence>
+                  </xs:complexType>
+              </xs:element>
+              <xs:element name="Executor_SFP" type="xs:string"/>
+              <xs:element name="Executor_Post" type="xs:string"/>
+              <xs:element name="StmInfrmtn_TF">
+                  <xs:complexType>
+                      <xs:sequence>
+                          <xs:element name="GUID" type="xs:string"/>
+                      </xs:sequence>
+                  </xs:complexType>
+              </xs:element>
+          </xs:sequence>
+       </xs:complexType>
+   </xs:element>
+</xs:schema>
