@@ -6,6 +6,8 @@ import com.InfPayDoc;
 import com.SKPREPORTKS;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class ConvertService {
     public DocModel transferW3c(Doc docrep, Doc doc){
@@ -13,7 +15,7 @@ public class ConvertService {
                 docrep.getDocNum(),
                 docrep.getDocDate(),
                 docrep.getOperType(),
-                docrep.getAmountOut(),
+                new BigDecimal(docrep.getAmountOut()),
                 docrep.getDocGUID(),
                 doc.getInfPay().getINN_PAY(),
                 doc.getInfPay().getKPP_PAY(),
@@ -38,7 +40,7 @@ public class ConvertService {
                 docrep.getDocNum(),
                 docrep.getDocDate(),
                 docrep.getOperType(),
-                docrep.getAmountOut(),
+                new BigDecimal(docrep.getAmountOut()),
                 docrep.getDocGUID(),
                 doc.getInfPAY().getINNPAY(),
                 doc.getInfPAY().getKPPPAY(),
