@@ -64,7 +64,6 @@ public class MainController implements WebMvcConfigurer {
             }
         }
 
-
     private void createResponse(List<DocModel> docModels) {
         RestTemplate restTemplate = new RestTemplate();
         String response = restTemplate.postForObject("http://localhost:9090/report", docModels, String.class);
