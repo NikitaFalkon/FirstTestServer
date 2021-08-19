@@ -2,8 +2,8 @@ package com.controller;
 
 import com.model.DocModel;
 import com.model.Form;
-import com.service.ReportService;
-import com.service.ZipService;
+import com.service.impl.ReportServiceImpl;
+import com.service.impl.ZipServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +22,9 @@ import java.util.List;
 @Controller
 public class MainController implements WebMvcConfigurer {
     @Autowired
-    ZipService zipService;
+    ZipServiceImpl zipService;
     @Autowired
-    ReportService reportService;
+    ReportServiceImpl reportService;
 
     @GetMapping("/")
     public String firstView(Form form) {

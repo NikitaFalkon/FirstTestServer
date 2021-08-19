@@ -8,24 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reposit {
-    public ArrayList<Doc> reportList;
-    public ArrayList<Doc> infPayList;
-    public List<SKPREPORTKS.Docs.Doc> docsSKPREPORTKS;
-    public List<InfPayDoc.Docs.Doc> docsInfPayDoc;
+    private List<Doc> reportList;
+    private List<Doc> infPayList;
+    private List<SKPREPORTKS.Docs.Doc> docsSKPREPORTKS;
+    private List<InfPayDoc.Docs.Doc> docsInfPayDoc;
 
-    public ArrayList<Doc> getReportList() {
+    public List<Doc> getReportList() {
         return reportList;
     }
 
-    public void setReportList(ArrayList<Doc> reportList) {
+    public void setReportList(List<Doc> reportList) {
         this.reportList = reportList;
     }
 
-    public ArrayList<Doc> getInfPayList() {
+    public List<Doc> getInfPayList() {
         return infPayList;
     }
 
-    public void setInfPayList(ArrayList<Doc> infPayList) {
+    public void setInfPayList(List<Doc> infPayList) {
         this.infPayList = infPayList;
     }
 
