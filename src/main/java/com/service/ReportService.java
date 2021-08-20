@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface ReportService {
+    ArrayList<DocModel> createReport (Map<String, String> files);
     void combineObjects(List<Doc> infPay, List<Doc> report, List<DocModel> finalObject);
-    ArrayList<DocModel> createReportJax (Map<String, String> files);
-    ArrayList<DocModel> createReportW3c (Map<String, String> files);
     void combineFinalObjects(List<InfPayDoc.Docs.Doc> infPay, List<SKPREPORTKS.Docs.Doc> report, List<DocModel> finalObject);
 }

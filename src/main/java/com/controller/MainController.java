@@ -2,8 +2,10 @@ package com.controller;
 
 import com.model.DocModel;
 import com.model.Form;
-import com.service.impl.ReportServiceImpl;
-import com.service.impl.ZipServiceImpl;
+import com.service.ReportService;
+import com.service.ZipService;
+import com.service.impl.ReportServiceJaxbImpl;
+import com.service.impl.ReportServiceW3cImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +16,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.yaml.snakeyaml.representer.BaseRepresenter;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController implements WebMvcConfigurer {
     @Autowired
-    ZipServiceImpl zipService;
+    ZipService zipService;
     @Autowired
-    ReportServiceImpl reportService;
+    private Map<String, ReportService> reportServiceMap = new HashMap<>();
 
     @GetMapping("/")
     public String firstView(Form form) {
@@ -42,13 +47,9 @@ public class MainController implements WebMvcConfigurer {
         }
 
         try {
-            List<DocModel> docModels = new ArrayList<>();
-
-            if (form.getName().equals("jx")) {
-                docModels = reportService.createReportJax(zipService.convert(form.getZipFile(), bindingResult));
-            } else {
-                docModels = reportService.createReportW3c(zipService.convert(form.getZipFile(), bindingResult));
-            }
+            List<DocModel> docModels = null;
+            Map<String, String> map = zipService.convert(form.getZipFile(), bindingResult);
+            docModels = reportServiceMap.get(form.getName()).createReport(map);
 
             createResponse(docModels);
 

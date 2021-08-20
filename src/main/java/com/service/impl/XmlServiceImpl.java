@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.model.Reposit;
+import com.service.JaxbService;
 import com.service.XmlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,7 @@ import java.util.Set;
 @Service
 public class XmlServiceImpl implements XmlService {
     @Autowired
-    JaxbServiceImpl jaxbService;
-    @Autowired
-    JaxbServiceImpl trueJaxbService;
+    JaxbService jaxbService;
 
     @Override
     public Reposit getReposit(Map<String, String> files) {
@@ -29,9 +28,9 @@ public class XmlServiceImpl implements XmlService {
             try  {
                 if (checkForTheFinal(entry.getValue())) {
                     if (checkForInfPay(entry.getValue())) {
-                        reposit.setDocsInfPayDoc(trueJaxbService.getInfPayDoc(entry.getValue()));
+                        reposit.setDocsInfPayDoc(jaxbService.getInfPayDoc(entry.getValue()));
                     } else {
-                        reposit.setDocsSKPREPORTKS(trueJaxbService.getReportKS(entry.getValue()));
+                        reposit.setDocsSKPREPORTKS(jaxbService.getReportKS(entry.getValue()));
                     }
                 } else {
                     break;
