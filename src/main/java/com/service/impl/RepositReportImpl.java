@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.model.NodeClass;
 import com.model.Reposit;
 import com.service.RepositW3c;
 import com.w3c.Doc;
@@ -21,11 +22,11 @@ public class RepositReportImpl implements RepositW3c {
             Node node = docs.item(i);
             Doc doc1 = new Doc();
             Element element = (Element) node;
-            doc1.setDocNum(getNodeValue(element, "DocNum"));
-            doc1.setDocDate(getNodeValue(element, "DocDate"));
-            doc1.setDocGUID(getNodeValue(element, "DocGUID"));
-            doc1.setOperType(getNodeValue(element, "OperType"));
-            doc1.setAmountOut(getNodeValue(element, "AmountOut"));
+            doc1.setDocNum(NodeClass.getNodeValue(element, "DocNum"));
+            doc1.setDocDate(NodeClass.getNodeValue(element, "DocDate"));
+            doc1.setDocGUID(NodeClass.getNodeValue(element, "DocGUID"));
+            doc1.setOperType(NodeClass.getNodeValue(element, "OperType"));
+            doc1.setAmountOut(NodeClass.getNodeValue(element, "AmountOut"));
             docList.add(doc1);
         }
 

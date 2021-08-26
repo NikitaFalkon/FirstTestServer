@@ -3,12 +3,14 @@ package com.service.impl;
 import com.InfPayDoc;
 import com.SKPREPORTKS;
 import com.model.DocModel;
+import com.model.FileInfo;
 import com.model.Reposit;
 import com.service.*;
 import com.w3c.Doc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +25,7 @@ public class ReportServiceW3cImpl implements ReportService {
     W3cService w3cService;
 
     @Override
-    public ArrayList<DocModel> createReport(Map<String, String> files) {
+    public ArrayList<DocModel> createReport(Map<String, FileInfo> files) throws ParserConfigurationException {
         ArrayList<DocModel> finalObject = new ArrayList<>();
         Reposit reposit = w3cService.parse(files);
         combineObjects(reposit.getInfPayList(), reposit.getReportList(), finalObject);

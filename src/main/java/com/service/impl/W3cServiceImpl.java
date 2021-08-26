@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.model.FileInfo;
 import com.model.Reposit;
 import com.service.RepositW3c;
 import com.service.W3cService;
@@ -11,6 +12,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,31 +27,24 @@ public class W3cServiceImpl implements W3cService {
     @Autowired
     private Map<String, RepositW3c> repositW3cMap = new HashMap<>();
 
-    public Reposit parse(Map<String, String> files) {
+    public Reposit parse(Map<String, FileInfo> files) throws ParserConfigurationException {
         Reposit reposit = new Reposit();
 
-        for(Map.Entry<String, String> entry : files.entrySet()) {
+        for(Map.Entry<String, FileInfo> entry : files.entrySet()) {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = null;
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
             try {
-                builder = factory.newDocumentBuilder();
-            } catch (ParserConfigurationException e) {
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document document = builder.parse(new InputSource(new StringReader(entry.getValue().getTextContent())));
+                Element elementCollection = document.getDocumentElement();
+                NodeList docs = document.getElementsByTagName("Doc");
+                reposit = repositW3cMap.get(elementCollection.getTagName()).createList(docs, reposit);
+            } catch (SAXException | IOException | ParserConfigurationException e) {
                 e.printStackTrace();
             }
-
-            Document document = null;
-
-            try {
-                document = builder.parse(new InputSource(new StringReader(entry.getValue())));
-
-            } catch (SAXException | IOException e) {
-                e.printStackTrace();
-            }
-
-            Element elementCollection = document.getDocumentElement();
-            NodeList docs = document.getElementsByTagName("Doc");
-            reposit = repositW3cMap.get(elementCollection.getTagName()).createList(docs, reposit);
         }
 
         return reposit;

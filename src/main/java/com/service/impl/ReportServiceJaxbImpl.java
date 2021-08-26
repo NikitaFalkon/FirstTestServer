@@ -3,6 +3,7 @@ package com.service.impl;
 import com.InfPayDoc;
 import com.SKPREPORTKS;
 import com.model.DocModel;
+import com.model.FileInfo;
 import com.model.Reposit;
 import com.service.*;
 import com.w3c.Doc;
@@ -33,31 +34,13 @@ public class ReportServiceJaxbImpl implements ReportService {
     }
 
     @Override
-    public ArrayList<DocModel> createReport (Map<String, String> files) {
+    public ArrayList<DocModel> createReport (Map<String, FileInfo> files) {
         ArrayList<DocModel> finalObject = new ArrayList<>();
         Reposit reposit = xmlService.getReposit(files);
         combineFinalObjects(reposit.getDocsInfPayDoc(), reposit.getDocsSKPREPORTKS(), finalObject);
 
         return finalObject;
     }
-
-  /*  @Override
-    public ArrayList<DocModel> jaxb (Map<String, String> files) {
-        ArrayList<DocModel> finalObject = new ArrayList<>();
-        Reposit reposit = xmlService.getReposit(files);
-        combineFinalObjects(reposit.getDocsInfPayDoc(), reposit.getDocsSKPREPORTKS(), finalObject);
-
-        return finalObject;
-    }
-
-    @Override
-    public ArrayList<DocModel> w3c (Map<String, String> files) {
-        ArrayList<DocModel> finalObject = new ArrayList<>();
-        Reposit reposit = w3cService.parse(files);
-        combineObjects(reposit.getInfPayList(), reposit.getReportList(), finalObject);
-
-        return finalObject;
-    }*/
 
     @Override
     public void combineFinalObjects(List<InfPayDoc.Docs.Doc> infPay, List<SKPREPORTKS.Docs.Doc> report, List<DocModel> finalObject) {
