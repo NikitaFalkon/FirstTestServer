@@ -34,7 +34,7 @@ public class ReportServiceJaxbImpl implements ReportService {
     }
 
     @Override
-    public ArrayList<DocModel> createReport (Map<String, FileInfo> files) {
+    public List<DocModel> createReport (Map<String, FileInfo> files) {
         ArrayList<DocModel> finalObject = new ArrayList<>();
         Reposit reposit = xmlService.getReposit(files);
         combineFinalObjects(reposit.getDocsInfPayDoc(), reposit.getDocsSKPREPORTKS(), finalObject);

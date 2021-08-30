@@ -25,7 +25,7 @@ public class ReportServiceW3cImpl implements ReportService {
     W3cService w3cService;
 
     @Override
-    public ArrayList<DocModel> createReport(Map<String, FileInfo> files) throws ParserConfigurationException {
+    public List<DocModel> createReport(Map<String, FileInfo> files) throws ParserConfigurationException {
         ArrayList<DocModel> finalObject = new ArrayList<>();
         Reposit reposit = w3cService.parse(files);
         combineObjects(reposit.getInfPayList(), reposit.getReportList(), finalObject);

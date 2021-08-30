@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("Inf_Pay_Doc")
-public class RepositInfPayImpll implements RepositW3c {
+public class RepositInfPayImpl implements RepositW3c {
     @Override
     public Reposit createList (NodeList docs, Reposit reposit) {
         List<Doc> docList = new ArrayList<>();

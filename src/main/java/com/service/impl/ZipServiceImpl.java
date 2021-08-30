@@ -2,7 +2,6 @@ package com.service.impl;
 
 import com.model.FileInfo;
 import com.service.ZipService;
-import org.codehaus.plexus.util.StringOutputStream;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -26,7 +25,7 @@ import java.util.zip.ZipInputStream;
 @Service
 public class ZipServiceImpl implements ZipService {
     @Override
-    public Map<String, FileInfo> getFiles(MultipartFile zip, BindingResult bindingResult) throws IOException, ParserConfigurationException, SAXException {
+    public Map<String, FileInfo> convert(MultipartFile zip, BindingResult bindingResult) throws IOException, ParserConfigurationException, SAXException {
         Map<String, FileInfo> files = new HashMap<>();
         ZipInputStream zin = new ZipInputStream(new BufferedInputStream(zip.getInputStream()));
         ZipEntry entry = null;
@@ -36,9 +35,9 @@ public class ZipServiceImpl implements ZipService {
             StringBuilder s = new StringBuilder();
             byte[] buffer = new byte[1024];
             int read = 0;
-                while ((read = zin.read(buffer, 0, 1024)) >= 0) {
-                    s.append(new String(buffer, 0, read));
-                }
+            while ((read = zin.read(buffer, 0, 1024)) >= 0) {
+                s.append(new String(buffer, 0, read));
+            }
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
@@ -46,7 +45,6 @@ public class ZipServiceImpl implements ZipService {
             factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(new InputSource(new StringReader(s.toString())));
-            document.getDocumentElement ();
             files.put(name, new FileInfo(document.getDocumentElement().getTagName(), s.toString()));
         }
 
@@ -55,10 +53,5 @@ public class ZipServiceImpl implements ZipService {
         }
 
         return files;
-    }
-
-    @Override
-    public Map<String, FileInfo> convert(MultipartFile s, BindingResult bindingResult) throws IOException, ParserConfigurationException, SAXException {
-        return getFiles(s, bindingResult);
     }
 }

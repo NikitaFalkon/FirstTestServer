@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.model.CustomeErrorHandler;
+import com.errorhandlers.CustomeErrorHandler;
 import com.model.FileInfo;
 import com.model.Reposit;
 import com.service.JaxbService;
@@ -18,6 +18,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.util.*;
 
@@ -51,7 +52,7 @@ public class XmlServiceImpl implements XmlService {
     }
 
     @Override
-    public boolean checkForTheFinal(String file) throws IOException {
+    public boolean checkForTheFinal(String file) {
         if(file.contains("SKP_REPORT_KS") && !file.contains("Итоговая")) {
             return false;
         }
@@ -69,42 +70,81 @@ public class XmlServiceImpl implements XmlService {
     }
 
     @Override
-    public String validation(String name, String value, String xsdPath) {
-        List<SAXException> errors = new ArrayList<>();
-        SchemaFactory factory = null;
-        Schema schema = null;
-        CustomeErrorHandler customeErrorHandler = null;
+    public String getValidationErrors(String name, String value, String xsdPath) throws IOException {
+        List<SAXException> errors = validationErrors(value, file(xsdPath));
 
-        try {
-            factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            schema = factory.newSchema(new File(xsdPath));
-        } catch (SAXException e) {
-            return e.toString();
-        }
+        if (!errors.isEmpty()) {
+            StringBuilder errorMessage = new StringBuilder( );
 
-        try {
-            Validator validator = schema.newValidator();
-            customeErrorHandler = new CustomeErrorHandler(errors);
-            validator.setErrorHandler(new CustomeErrorHandler(errors));
-            validator.validate(new StreamSource(new StringReader(value)));
-
-            if ( customeErrorHandler.exceptions().size() != 0 ) {
-                StringBuilder errorMessage = new StringBuilder( );
-
-                for ( SAXException error : errors ) {
-                    errorMessage.append(error.toString()).append( "\r\n" );
-                }
-
-                return "Invalid " + name + " " + errorMessage.toString() + "\r\n";
+            for ( SAXException error : errors ) {
+                errorMessage.append(error.toString()).append( "\r\n" );
             }
-        } catch (SAXParseException e) {
-            customeErrorHandler.add(e);
-        } catch (IOException e) {
-            return "Unable to validate" + name + "\n";
-        } catch (SAXException e) {
-            customeErrorHandler.add(e);
+
+             return "Invalid " + name + " " + errorMessage.toString() + "\r\n";
         }
 
         return name + "is valid";
+    }
+
+    @Override
+    public boolean validation(String xsdPath, String xmlContent) {
+        try {
+            Validator validator = validator(file(xsdPath));
+            validator.validate(new StreamSource(new StringReader(xmlContent)));
+        } catch (SAXException | IOException e) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean validation(String xsdPath, String xmlContent, List<SAXException> saxExceptions) {
+        CustomeErrorHandler customeErrorHandler = new CustomeErrorHandler(saxExceptions);
+
+        try {
+            Validator validator = validator(file(xsdPath));
+            validator.setErrorHandler(customeErrorHandler);
+            validator.validate(new StreamSource(new StringReader(xmlContent)));
+        } catch (SAXParseException e) {
+            customeErrorHandler.add(e);
+        } catch (SAXException e) {
+            customeErrorHandler.add(e);
+        } catch (IOException e) {
+            return false;
+        }
+
+        return customeErrorHandler.exceptions().isEmpty();
+    }
+
+    @Override
+    public List<SAXException> validationErrors(String xmlContent, String xsdPath) throws IOException {
+        List<SAXException> errors = new ArrayList<>();
+        CustomeErrorHandler customeErrorHandler = new CustomeErrorHandler(errors);
+
+        try {
+            Validator validator = validator(file(xsdPath));
+            validator.setErrorHandler(customeErrorHandler);
+            validator.validate(new StreamSource(new StringReader(xmlContent)));
+        } catch (SAXException e) {
+            customeErrorHandler.add(e);
+        }
+
+        return customeErrorHandler.exceptions();
+    }
+
+    @Override
+    public Validator validator(String xsdPath) throws SAXException {
+        SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = factory.newSchema(new File(file(xsdPath)));
+        Validator validator = schema.newValidator();
+
+        return validator;
+    }
+
+    public String file(String name) {
+        InputStream is = getClass().getClassLoader()
+                .getResourceAsStream(name);
+
+        return this.getClass().getResource("/PayDocs.xsd").getFile();
     }
 }

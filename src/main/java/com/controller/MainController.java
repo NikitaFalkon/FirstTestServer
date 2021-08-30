@@ -1,15 +1,16 @@
 package com.controller;
 
+import com.errorhandlers.CustomeErrorHandler;
 import com.model.DocModel;
 import com.model.FileInfo;
 import com.model.Form;
 import com.service.ReportService;
 import com.service.XmlService;
 import com.service.ZipService;
-import com.model.XsdClass;
+import com.xsd.XsdClass;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,16 +23,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.xml.sax.SAXException;
 
 import javax.validation.Valid;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class MainController implements WebMvcConfigurer {
-
     @Autowired
     ZipService zipService;
     @Autowired
@@ -61,40 +60,51 @@ public class MainController implements WebMvcConfigurer {
             return "page";
         }
 
-        //try {
+        try {
             Map<String, FileInfo> map = zipService.convert(form.getZipFile(), bindingResult);
             List<DocModel> docModels  = reportServiceMap.get(form.getName()).createReport(map);
-
-            createResponse(docModels);
-
             String result = validation(map);
+            validationInProgram(map);
+            createResponse(docModels);
             model.addAttribute("result", result);
 
             return "page";
-        } /*catch(Exception e){
+        } catch(Exception e){
                 String result = e.getMessage();
                 model.addAttribute("result", result);
 
                 return "page";
-            }*/
-        //}
+            }
+        }
 
     private void createResponse(List<DocModel> docModels) {
         String response = restTemplate.postForObject("http://localhost:9090/report", docModels, String.class);
     }
 
-    private String validation(Map<String, FileInfo> map) throws SAXException, IOException {
+    private String validation(Map<String, FileInfo> map) throws IOException {
         StringBuilder finalString = new StringBuilder();
+
         for(Map.Entry<String, FileInfo> entry : map.entrySet()) {
-            finalString.append(xmlService.validation(entry.getKey(), entry.getValue().getTextContent(), xsdClass.xsd(entry.getValue().getRootElement())));
+            finalString.append(xmlService.getValidationErrors(entry.getKey(),
+                    entry.getValue().getTextContent(),
+                    xsdClass.xsd(entry.getValue().getRootElement())));
         }
+
         return finalString.toString();
     }
 
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+    private void validationInProgram(Map<String, FileInfo> map) throws IOException {
+        Logger log = LoggerFactory.getLogger(MainController.class);
+
+        for(Map.Entry<String, FileInfo> entry : map.entrySet()) {
+            String s = entry.getValue().getRootElement();
+            log.info("validation : " + xmlService.validation(xsdClass.xsd(entry.getValue().getRootElement()),
+                    entry.getValue().getTextContent()));
+            log.info("errors : " + xmlService.validationErrors(entry.getValue().getTextContent(),
+                    xsdClass.xsd(entry.getValue().getRootElement())));
+            List list = new ArrayList<SAXException>();
+            log.info("validationWithErrors : " + xmlService.validation(xsdClass.xsd(entry.getValue().getRootElement()),
+                    entry.getValue().getTextContent(), list));
+        }
     }
-
-
 }

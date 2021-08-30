@@ -1,6 +1,6 @@
-package com.model;
+package com.errorhandlers;
 
-import ch.qos.logback.classic.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.ErrorHandler;
@@ -30,14 +30,14 @@ public class CustomeErrorHandler implements ErrorHandler {
     }
 
     @Override
-    public void warning(SAXParseException exception) throws SAXException {
+    public void warning(SAXParseException exception) {
             log.warn("Parse Warning at line " + exception.getLineNumber() +
                     " column " + exception.getColumnNumber() + ": " +
                     exception.getMessage(), exception);
     }
 
     @Override
-    public void error(SAXParseException exception) throws SAXException {
+    public void error(SAXParseException exception) {
             log.warn("Parse Error at line " + exception.getLineNumber() +
                     " column " + exception.getColumnNumber() + ": " +
                     exception.getMessage(), exception);
@@ -45,7 +45,7 @@ public class CustomeErrorHandler implements ErrorHandler {
     }
 
     @Override
-    public void fatalError(SAXParseException exception) throws SAXException {
+    public void fatalError(SAXParseException exception) {
             log.warn("Parse Fatal Error at line " + exception.getLineNumber() +
                     " column " + exception.getColumnNumber() + ": " +
                     exception.getMessage(), exception);

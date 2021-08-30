@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface ReportService {
-    ArrayList<DocModel> createReport (Map<String, FileInfo> files) throws ParserConfigurationException;
+    List<DocModel> createReport (Map<String, FileInfo> files) throws ParserConfigurationException;
     void combineObjects(List<Doc> infPay, List<Doc> report, List<DocModel> finalObject);
     void combineFinalObjects(List<InfPayDoc.Docs.Doc> infPay, List<SKPREPORTKS.Docs.Doc> report, List<DocModel> finalObject);
 }
