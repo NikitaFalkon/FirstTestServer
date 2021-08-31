@@ -22,7 +22,7 @@ public interface XmlService {
 
     public boolean validation(String xsdPath, String xmlContent);
 
-    public boolean validation(String xsdPath, String xmlContent, List<SAXException> saxExceptions);
+    public boolean validation(String xsdPath, String xmlContent, List<SAXException> saxExceptions) throws IOException;
 
     public List<SAXException> validationErrors(String xmlContent, String xsdPath) throws IOException;
 

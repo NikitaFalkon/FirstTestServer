@@ -33,8 +33,6 @@ public class ReportServiceW3cImpl implements ReportService {
         return finalObject;
     }
 
-
-
     @Override
     public void combineObjects(List<Doc> infPay, List<Doc> report, List<DocModel> finalObject) {
         report.forEach(repDoc -> {

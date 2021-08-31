@@ -35,6 +35,7 @@ public class ZipServiceImpl implements ZipService {
             StringBuilder s = new StringBuilder();
             byte[] buffer = new byte[1024];
             int read = 0;
+
             while ((read = zin.read(buffer, 0, 1024)) >= 0) {
                 s.append(new String(buffer, 0, read));
             }

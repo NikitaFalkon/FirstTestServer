@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class ConvertServiceImpl implements ConvertService {
     @Override
     public DocModel transferW3c(Doc docrep, Doc doc) {
-        DocModel docModel = new DocModel(
+        return new DocModel(
                 docrep.getDocNum(),
                 docrep.getDocDate(),
                 docrep.getOperType(),
@@ -33,13 +33,11 @@ public class ConvertServiceImpl implements ConvertService {
                 doc.getBankRcp().getBS_KS_PAY(),
                 doc.getPurpose()
         );
-
-        return docModel;
     }
 
     @Override
     public DocModel transferJaxb(SKPREPORTKS.Docs.Doc docrep, InfPayDoc.Docs.Doc doc) {
-        DocModel docModel = new DocModel(
+        return new DocModel(
                 docrep.getDocNum(),
                 docrep.getDocDate(),
                 docrep.getOperType(),
@@ -59,7 +57,5 @@ public class ConvertServiceImpl implements ConvertService {
                 doc.getBankRCP().getBSKSPAY(),
                 doc.getPurpose()
         );
-
-        return docModel;
     }
 }

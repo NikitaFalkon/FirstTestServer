@@ -13,7 +13,6 @@ import java.util.List;
 
 @Service
 public class JaxbServiceImpl implements JaxbService {
-
     @Override
     public List<InfPayDoc.Docs.Doc> getInfPayDoc(String file) throws  JAXBException {
         JAXBContext context = JAXBContext.newInstance(InfPayDoc.class);

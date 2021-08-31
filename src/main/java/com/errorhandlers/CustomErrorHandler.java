@@ -2,22 +2,17 @@ package com.errorhandlers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CustomeErrorHandler implements ErrorHandler {
-    private static final Logger log = (Logger) LoggerFactory.getLogger(CustomeErrorHandler.class);
-    @Autowired
-    private ErrorHandler errorHandler;
-    private List<SAXException> errors = new ArrayList<>();
+public class CustomErrorHandler implements ErrorHandler {
+    private static final Logger log = LoggerFactory.getLogger(CustomErrorHandler.class);
+    private final List<SAXException> errors;
 
-
-    public CustomeErrorHandler(List<SAXException> errors) {
+    public CustomErrorHandler(List<SAXException> errors) {
         this.errors = errors;
     }
 

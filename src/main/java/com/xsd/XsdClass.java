@@ -1,16 +1,14 @@
 package com.xsd;
 
-import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
 public class XsdClass {
-    Map<String, String> map = null;
+    Map<String, String> map;
 
-    public XsdClass() throws IOException {
+    public XsdClass() {
         Yaml yaml = new Yaml();
         InputStream inputStream = this.getClass()
                 .getClassLoader()

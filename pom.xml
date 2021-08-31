@@ -34,7 +34,7 @@
                         <source>src/main/resources/PayDocs.xsd</source>
                         <source>src/main/resources/Report.xsd</source>
                     </sources>
-                    <outputDirectory>${basedir}/target/generated</outputDirectory>
+                    <outputDirectory>${basedir}/src/main/generated</outputDirectory>
                     <clearOutputDir>true</clearOutputDir>
                     <packageName>com</packageName>
                 </configuration>

@@ -23,9 +23,8 @@ import java.util.Map;
 
 @Service
 public class W3cServiceImpl implements W3cService {
-
     @Autowired
-    private Map<String, RepositW3c> repositW3cMap = new HashMap<>();
+    private final Map<String, RepositW3c> repositW3cMap = new HashMap<>();
 
     public Reposit parse(Map<String, FileInfo> files) throws ParserConfigurationException {
         Reposit reposit = new Reposit();

@@ -1,6 +1,5 @@
 package com.controller;
 
-import com.errorhandlers.CustomeErrorHandler;
 import com.model.DocModel;
 import com.model.FileInfo;
 import com.model.Form;
@@ -38,8 +37,8 @@ public class MainController implements WebMvcConfigurer {
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
-    private Map<String, ReportService> reportServiceMap = new HashMap<>();
-    private XsdClass xsdClass;
+    private final Map<String, ReportService> reportServiceMap = new HashMap<>();
+    private final XsdClass xsdClass;
 
     public MainController() throws IOException {
         xsdClass = new XsdClass();
@@ -78,7 +77,7 @@ public class MainController implements WebMvcConfigurer {
         }
 
     private void createResponse(List<DocModel> docModels) {
-        String response = restTemplate.postForObject("http://localhost:9090/report", docModels, String.class);
+        restTemplate.postForObject("http://localhost:9090/report", docModels, String.class);
     }
 
     private String validation(Map<String, FileInfo> map) throws IOException {
@@ -97,7 +96,6 @@ public class MainController implements WebMvcConfigurer {
         Logger log = LoggerFactory.getLogger(MainController.class);
 
         for(Map.Entry<String, FileInfo> entry : map.entrySet()) {
-            String s = entry.getValue().getRootElement();
             log.info("validation : " + xmlService.validation(xsdClass.xsd(entry.getValue().getRootElement()),
                     entry.getValue().getTextContent()));
             log.info("errors : " + xmlService.validationErrors(entry.getValue().getTextContent(),
